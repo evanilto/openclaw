@@ -7,6 +7,7 @@ networks:
 services:
 
   openclaw:
+    user: "1001:1001"
     build:
       context: .
       dockerfile: Dockerfile.openclaw
@@ -21,19 +22,10 @@ services:
     volumes:
       - ./config:/home/node/.openclaw
       - ./workspace:/home/node/.openclaw/workspace
-    command:
-      [
-        "node",
-        "openclaw.mjs",
-        "gateway",
-        "--bind",
-        "lan",
-        "--allow-unconfigured"
-      ]
+    command: [ "node", "openclaw.mjs", "gateway", "--bind", "lan", "--allow-unconfigured" ]
     networks:
       - openclaw-net
     restart: unless-stopped
-
 
   nginx:
     image: nginx:alpine
@@ -49,7 +41,6 @@ services:
       - openclaw-net
     restart: unless-stopped
 
-
   postgres:
     image: postgres:16
     container_name: fila-db
@@ -63,7 +54,6 @@ services:
     networks:
       - openclaw-net
     restart: unless-stopped
-
 
   fila-api:
     build: ./api
@@ -80,7 +70,6 @@ services:
     networks:
       - openclaw-net
     restart: unless-stopped
-
 
 volumes:
   postgres-data:

@@ -1,6 +1,6 @@
 FROM ghcr.io/openclaw/openclaw:latest
 
-USER root
+USER 1001
 
 RUN apt-get update && \
     apt-get install -y postgresql-client && \
