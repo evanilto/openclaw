@@ -1,0 +1,26 @@
+{
+  agents: {
+    defaults: {
+      workspace: "/home/node/.openclaw/workspace",
+      model: "openai/gpt-4.1"
+    }
+  },
+
+  gateway: {
+    mode: "local",
+    trustedProxies: ["172.16.0.0/12"],
+    controlUi: {
+      allowedOrigins: [
+        "https://10.88.1.78:8443"
+      ]
+    }
+  },
+
+  commands: {
+    native: "auto",
+    nativeSkills: "auto",
+    restart: true,
+    ownerDisplay: "raw"
+  },
+
+}

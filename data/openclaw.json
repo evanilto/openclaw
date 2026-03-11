@@ -1,0 +1,25 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "/home/node/.openclaw/workspace"
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.2.27",
+    "lastTouchedAt": "2026-02-27T18:53:01.201Z"
+  },
+  "gateway": {
+  "mode": "local",
+  "bind": "lan",
+  "port": 18789,
+  "controlUi": {
+      "allowedOrigins": ["http://10.88.1.78:18789"]
+    }
+  }
+}
