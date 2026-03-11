@@ -180,6 +180,7 @@ docker-data
 *.key
 *.pem
 
+
 # python
 
 **pycache**/
@@ -189,3 +190,6 @@ docker-data
 
 *.swp
 *.swo
+
+certs/*
+!certs/.gitkeep
