@@ -1,9 +1,17 @@
 FROM ghcr.io/openclaw/openclaw:latest
 
+USER root
+
+# criar usuário com UID 1001 (igual ao host)
+RUN useradd -u 1001 -m -s /bin/bash infohu
+
+# instalar cliente postgres
+RUN apt-get update \
+    && apt-get install -y postgresql-client \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# criar link da ferramenta sql_query
+RUN ln -s /home/node/.openclaw/workspace/sql_query.sh /usr/local/bin/sql_query
+
 USER 1001
-
-RUN apt-get update && \
-    apt-get install -y postgresql-client && \
-    apt-get clean
-
-USER node

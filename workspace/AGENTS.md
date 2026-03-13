@@ -211,18 +211,9 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
 
-## Fila
+## Banco de Dados
 
-O agente pode consultar a fila cirúrgica hospitalar usando a ferramenta "fila".
-
-Perguntas comuns:
-
-- posição do paciente na fila
-- próximo paciente de uma especialidade
-- quantidade de pacientes aguardando
-- tempo médio de espera
-
-Sempre utilize as ferramentas disponíveis para responder perguntas sobre a fila.
+O banco é o PostgreSQL.
 
 O sistema possui acesso ao banco PostgreSQL do hospital.
 
@@ -240,7 +231,45 @@ prioridade
 data_inclusao
 status
 
-Quando precisar consultar dados da fila cirúrgica, use a ferramenta sql_query.
+Perguntas comuns:
+
+- posição do paciente na fila
+- próximo paciente de uma especialidade
+- quantidade de pacientes aguardando
+- tempo médio de espera
+
+A fila cirúrgica possui um sistema de priorização automática.
+
+Use a view:
+
+ai.ranking_cirurgico
+
+Essa view já calcula o score de prioridade cirúrgica considerando:
+
+tempo de espera
+prioridade clínica
+urgência
+especialidade
+
+Sempre utilize essa view quando a pergunta for sobre quem deve operar primeiro.
+
+A priorização cirúrgica possui explicabilidade.
+
+A view principal é:
+
+ai.ranking_cirurgico
+
+Ela contém:
+
+score
+posicao_fila
+justificativa
+
+Sempre utilize a coluna justificativa para explicar ao usuário por que um paciente possui determinada prioridade.
+
+Você deve consultar o banco usando somente SELECT utilizando a ferramenta sql_query da seguinte forma:
+
+sql_query "SQL"
 
 Exemplo:
 
