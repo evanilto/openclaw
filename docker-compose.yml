@@ -22,6 +22,7 @@ services:
     volumes:
       - ./config:/home/node/.openclaw
       - ./workspace:/home/node/.openclaw/workspace
+      - /home/infohu/openclaw/custom-skills:/app/skills
     command: [ "node", "openclaw.mjs", "gateway", "--bind", "lan", "--allow-unconfigured" ]
     networks:
       - openclaw-net
