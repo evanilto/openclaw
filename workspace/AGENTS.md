@@ -263,9 +263,8 @@ Ela contém:
 
 score
 posicao_fila
-justificativa
 
-Sempre utilize a coluna justificativa para explicar ao usuário por que um paciente possui determinada prioridade.
+Não use socket para acessar o banco.
 
 Você deve consultar o banco usando somente SELECT utilizando a ferramenta sql_query da seguinte forma:
 
@@ -273,4 +272,4 @@ sql_query "SQL"
 
 Exemplo:
 
-sql_query "SELECT paciente FROM fila_cirurgica WHERE especialidade='cardiologia' AND status='aguardando' ORDER BY data_inclusao LIMIT 1;"
+sql_query "SELECT paciente FROM fila_cirurgica WHERE especialidade='cardiologia'  ORDER BY data_inclusao LIMIT 1;"

@@ -22,8 +22,19 @@ services:
     volumes:
       - ./config:/home/node/.openclaw
       - ./workspace:/home/node/.openclaw/workspace
-      - /home/infohu/openclaw/custom-skills:/app/skills
-    command: [ "node", "openclaw.mjs", "gateway", "--bind", "lan", "--allow-unconfigured" ]
+      - /home/infohu/openclaw/skills-system:/app/skills
+      - /home/infohu/openclaw/skills-custom:/app/custom-skills
+    #command: [ "node", "openclaw.mjs", "gateway", "--bind", "lan", "--allow-unconfigured" ]
+    command: >
+      sh -c "
+      if [ -d /app/custom-skills ]; then
+        for d in /app/custom-skills/*; do
+          [ -e \"$$d\" ] || continue;
+          ln -sf $$d /app/skills/$$(basename $$d);
+        done;
+      fi &&
+      node openclaw.mjs gateway --bind lan --allow-unconfigured
+      "
     networks:
       - openclaw-net
     restart: unless-stopped

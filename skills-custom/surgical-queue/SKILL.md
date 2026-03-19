@@ -1,6 +1,6 @@
 ---
 name: surgical-queue
-description: Query and analyze hospital surgical queue data from the database. Use when users ask about patients waiting for surgery, surgical schedules, operating room queues, or pending procedures.
+description: Retrieve surgical queue data. Query and analyze hospital surgical queue data from the database. Use when users ask about patients waiting for surgery, surgical schedules, operating room queues, fila cirúrgica, pacientes aguardando cirurgia, or pending procedures.
 ---
 
 # Surgical Queue Skill
@@ -17,6 +17,19 @@ This skill retrieves surgical queue data from the hospital database.
    - priority
 3. Query the surgical scheduling database.
 4. Return results in a structured format.
+
+## Execution
+
+To retrieve surgical queue data:
+
+1. Don't use sockets, use the script query_que.py to retrieve data from the database.
+
+2. Execute the script:
+   python scripts/query_queue.py
+
+3. Parse the output.
+
+4. Return structured response to the user.
 
 ## Example queries
 
@@ -36,3 +49,5 @@ Procedure: Hip replacement
 Priority: High  
 Scheduled date: 2026-03-20  
 Status: Waiting
+
+Don't use sockets, use query_que.py to retrieve data from the database.
