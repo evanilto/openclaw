@@ -1,4 +1,4 @@
-FROM node:22-bookworm@sha256:cd7bcd2e7a1e6f72052feb023c7f6b722205d3fcab7bbcbd2d1bfdab10b1e935
+FROM node:26-bookworm@sha256:0b7eacf8828bd06dc4a45be88890054eb345a5c7ee53697a98a97aba415e92cd
 
 # Install Bun (required for build scripts)
 RUN curl -fsSL https://bun.sh/install | bash
@@ -24,7 +24,7 @@ COPY --chown=node:node scripts ./scripts
 
 # Python
 
-FROM python:3.11
+FROM python:3.14.5
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
